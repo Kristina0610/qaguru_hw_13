@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import properties.tests.SystemPropertiesTest;
 
 import java.util.Map;
 
@@ -16,12 +17,12 @@ public class TestBase {
 
   @BeforeAll
   static void beforeAll() {
-    Configuration.baseUrl = "https://demoqa.com";
-    Configuration.browserSize = "1520x1080";
-    //Эта настройка упрощает загрузку сайтов,
-    //которые зависят от плохо грузящихся ресурсов
+    Configuration.browser = SystemPropertiesTest.browserProperty;
+    Configuration.browserSize = SystemPropertiesTest.browserSizeProperty;
+    Configuration.browserVersion = SystemPropertiesTest.browserVersionProperty;
+    Configuration.baseUrl = SystemPropertiesTest.baseUrlProperty;
+    Configuration.remote = SystemPropertiesTest.remoteSelenoidProperty;
     Configuration.pageLoadStrategy = "eager";
-    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(

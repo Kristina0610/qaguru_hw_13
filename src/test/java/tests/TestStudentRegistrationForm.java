@@ -9,7 +9,7 @@ import utils.RandomUtils;
 
 public class TestStudentRegistrationForm extends TestBase {
   RegistrationPage registrationPage = new RegistrationPage();
-  RandomUtils randomUtils  = new RandomUtils();
+  RandomUtils randomUtils = new RandomUtils();
 
   String firstName = randomUtils.getRandomFirstName(),
           lastName = randomUtils.getRandomLastName(),
